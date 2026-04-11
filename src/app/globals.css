@@ -1,26 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Tipografía */
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Paleta Navy */
+  --color-navy:     #1B2A5E;
+  --color-navy-50:  #E8EBF4;
+  --color-navy-100: #C5CCE5;
+  --color-navy-200: #9DAAD1;
+  --color-navy-300: #7488BC;
+  --color-navy-400: #4C66A8;
+  --color-navy-500: #1B2A5E;
+  --color-navy-600: #162350;
+  --color-navy-700: #111C41;
+  --color-navy-800: #0C1432;
+  --color-navy-900: #070D23;
+
+  /* Paleta Cyan */
+  --color-cyan:     #2EC4D4;
+  --color-cyan-50:  #E9F9FB;
+  --color-cyan-100: #C8F1F6;
+  --color-cyan-200: #9DE6EE;
+  --color-cyan-300: #6BDAE7;
+  --color-cyan-400: #4DCFDF;
+  --color-cyan-500: #2EC4D4;
+  --color-cyan-600: #24A3B1;
+  --color-cyan-700: #1A8290;
+  --color-cyan-800: #10616F;
+  --color-cyan-900: #06404D;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-navy);
+    background-color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .btn-primary {
+    @apply bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer;
+  }
+  .btn-secondary {
+    @apply bg-navy hover:bg-navy-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer;
+  }
+  .btn-outline {
+    @apply border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer;
+  }
+  .btn-ghost {
+    @apply text-navy hover:bg-navy-50 font-medium px-4 py-2 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer;
+  }
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
+  }
+  .input {
+    @apply w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all;
+  }
+  .label {
+    @apply block text-sm font-medium text-navy-700 mb-1;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-green  { @apply badge bg-green-100 text-green-800; }
+  .badge-yellow { @apply badge bg-yellow-100 text-yellow-800; }
+  .badge-red    { @apply badge bg-red-100 text-red-800; }
+  .badge-blue   { @apply badge bg-blue-100 text-blue-800; }
+  .badge-gray   { @apply badge bg-gray-100 text-gray-700; }
 }
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
