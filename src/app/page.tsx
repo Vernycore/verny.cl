@@ -1,10 +1,21 @@
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+import Hero from '@/components/sections/Hero'
+import Productos from '@/components/sections/Productos'
+import Ecosistema from '@/components/sections/Ecosistema'
+import Proceso from '@/components/sections/Proceso'
+import Garantia from '@/components/sections/Garantia'
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-navy flex items-center justify-center">
-      <div className="text-center text-white">
-        <h1 className="text-4xl font-bold mb-4">Verny.cl</h1>
-        <p className="text-white/60">Sitio en construcción</p>
-      </div>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <Productos />
+      <Ecosistema />
+      <Proceso />
+      <Garantia />
+      <Footer />
+    </>
   )
 }

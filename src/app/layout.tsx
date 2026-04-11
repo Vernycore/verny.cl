@@ -12,8 +12,15 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Verny — Agentes IA para tu empresa',
-  description: 'Soluciones de inteligencia artificial para empresas chilenas. Automatiza, audita y potencia tus procesos con agentes IA.',
+  title: 'Verny — Automatización con IA y Soluciones Digitales para Empresas en Chile',
+  description: 'Verny - Automatización con IA y Soluciones Digitales para Empresas en Chile. Agentes IA para WhatsApp, agendamiento automático y ecosistema digital completo.',
+  keywords: 'automatización IA Chile, agente WhatsApp, chatbot empresas, VernyBot, agendar citas WhatsApp',
+  openGraph: {
+    title: 'Verny — Automatización con IA para Empresas en Chile',
+    description: 'Automatiza tareas repetitivas con agentes de IA. Respuesta 24/7, agendamiento automático y más.',
+    locale: 'es_CL',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
