@@ -117,7 +117,7 @@ const integrations = [
   { name: 'WhatsApp', slug: 'whatsapp' },
   { name: 'SAP', slug: 'sap' },
   { name: 'Shopify', slug: 'shopify' },
-  { name: 'Slack', slug: 'slack' },
+  { name: 'Zendesk', slug: 'zendesk' },
   { name: 'Google', slug: 'google' },
   { name: 'Zapier', slug: 'zapier' },
   { name: 'Notion', slug: 'notion' },
