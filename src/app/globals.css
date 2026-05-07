@@ -58,7 +58,7 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-navy hover:bg-navy-700 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply bg-[#003A68] hover:bg-[#00213D] text-white font-semibold px-5 py-2.5 rounded-lg border border-[#00213D] shadow-[0_16px_34px_rgba(0,33,61,0.34)] transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
   }
   .btn-secondary {
     @apply bg-navy hover:bg-navy-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white;

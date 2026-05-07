@@ -36,10 +36,9 @@ export default function RootLayout({
           className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
         >
           <div
-            className="absolute inset-x-[-8vw] top-[5vh] h-[72vh] bg-cover bg-center bg-no-repeat opacity-42 sm:top-[2vh] sm:h-[78vh] lg:top-0 lg:h-[86vh]"
+            className="absolute inset-x-[-8vw] top-[5vh] h-[72vh] bg-cover bg-center bg-no-repeat opacity-45 sm:top-[2vh] sm:h-[78vh] lg:top-0 lg:h-[86vh]"
             style={{ backgroundImage: "url('/wave-glass-fixed.png')" }}
           />
-          <div className="absolute inset-0 bg-white/60" />
         </div>
         <div className="relative z-10 flex min-h-full flex-col">
           {children}

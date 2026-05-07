@@ -235,10 +235,12 @@ function IphoneMockup() {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center pt-20">
+      <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#FBFEFF] via-[#FBFEFF]/90 to-transparent lg:w-[68%] pointer-events-none" />
+      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-b from-[#FBFEFF]/40 via-transparent to-[#FBFEFF]/55 pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#EAF7FF] to-transparent pointer-events-none" />
       <div className="absolute left-8 top-32 hidden h-64 w-64 rounded-full bg-cyan-200/30 blur-3xl lg:block" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Texto */}
@@ -246,7 +248,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="relative"
           >
+            <div className="absolute -inset-x-4 -inset-y-5 -z-10 rounded-[2rem] bg-white/58 blur-2xl sm:-inset-x-8 lg:bg-white/36" />
             {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-1.5 mb-5 shadow-sm">
               <Zap className="w-3 h-3 text-cyan-600" />
@@ -275,11 +279,17 @@ export default function Hero() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-              <a href="#contacto" className="btn-primary text-sm font-bold tracking-wide px-8 py-4 uppercase">
+              <a
+                href="#contacto"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#004D8C] px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-[0_12px_28px_rgba(0,77,140,0.24)] transition-colors duration-200 hover:bg-[#003A68] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              >
                 Automatizar ahora
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a href="#productos" className="text-navy/70 hover:text-navy font-semibold text-sm tracking-wide uppercase transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+              <a
+                href="#productos"
+                className="inline-flex items-center border-b-2 border-cyan-500 pb-1 text-sm font-bold uppercase tracking-wide text-[#004D8C] transition-colors duration-200 hover:border-[#004D8C] hover:text-[#00213D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+              >
                 Ver soluciones
               </a>
             </div>
