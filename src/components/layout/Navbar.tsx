@@ -27,8 +27,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100'
-          : 'bg-transparent'
+          ? 'bg-white/88 backdrop-blur-md shadow-sm border-b border-sky-100'
+          : 'bg-white/70 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@ export default function Navbar() {
               alt="Verny"
               width={120}
               height={40}
-              className="object-contain"
+              className="object-contain transition-all duration-300"
               priority
             />
           </Link>
@@ -51,7 +51,11 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-navy/70 hover:text-navy transition-colors duration-150"
+                className={`text-sm font-medium transition-colors duration-150 ${
+                  scrolled
+                    ? 'text-navy/70 hover:text-navy focus-visible:text-navy'
+                    : 'text-navy/65 hover:text-navy focus-visible:text-navy'
+                } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-4 focus-visible:ring-offset-transparent rounded-sm`}
               >
                 {link.label}
               </a>
@@ -60,7 +64,14 @@ export default function Navbar() {
 
           {/* CTAs desktop */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="https://app.verny.cl/appusuarios" className="btn-outline text-sm py-2 px-4">
+            <a
+              href="https://app.verny.cl/appusuarios"
+              className={`text-sm py-2 px-4 font-semibold rounded-lg border inline-flex items-center gap-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-4 focus-visible:ring-offset-transparent ${
+                scrolled
+                  ? 'border-sky-200 text-navy hover:bg-sky-50'
+                  : 'border-sky-200 text-navy hover:bg-white'
+              }`}
+            >
               Acceso Clientes
             </a>
             <a href="#contacto" className="btn-primary text-sm py-2 px-4">
@@ -70,8 +81,14 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 text-navy"
+            className={`lg:hidden rounded-lg p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 ${
+              scrolled || mobileOpen
+                ? 'text-navy hover:bg-sky-50'
+                : 'text-navy hover:bg-white'
+            }`}
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -85,7 +102,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-gray-100 px-4 pb-4"
+            className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 px-4 pb-4 shadow-lg"
           >
             <nav className="flex flex-col gap-1 pt-3">
               {navLinks.map((link) => (
@@ -93,7 +110,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-navy/70 hover:text-navy py-2.5 border-b border-gray-50"
+                  className="text-sm font-medium text-navy/70 hover:text-navy focus-visible:text-navy py-2.5 border-b border-gray-50 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
                 >
                   {link.label}
                 </a>
@@ -102,7 +119,7 @@ export default function Navbar() {
                 <a href="https://app.verny.cl/appusuarios" className="btn-outline text-sm justify-center">
                   Acceso Clientes
                 </a>
-                <a href="#contacto" className="btn-primary text-sm justify-center">
+                <a href="#contacto" onClick={() => setMobileOpen(false)} className="btn-primary text-sm justify-center">
                   Hablemos
                 </a>
               </div>

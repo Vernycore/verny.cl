@@ -11,9 +11,13 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <div className="h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent" />
       <Productos />
+      <div className="h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent" />
       <Ecosistema />
+      <div className="h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent" />
       <Proceso />
+      <div className="h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent" />
       <Garantia />
       <Footer />
     </>

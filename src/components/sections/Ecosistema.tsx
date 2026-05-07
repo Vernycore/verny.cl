@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Search, BarChart2, Users, Monitor } from 'lucide-react'
+import Image from 'next/image'
 
 function fadeIn(delay = 0) {
   return {
@@ -12,115 +13,150 @@ function fadeIn(delay = 0) {
   }
 }
 
+
 export default function Ecosistema() {
   return (
-    <section id="ecosistema" className="py-24 bg-gray-50">
+    <section id="ecosistema" className="py-28 bg-[#EAF7FF]/84 backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...fadeIn()} className="text-center mb-14">
-          <h2 className="text-4xl font-bold text-navy mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
             Optimización{' '}
-            <span className="text-cyan-500">Ecosistema Digital</span>
+            <span className="text-gradient">Ecosistema Digital</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Más allá del bot: construimos la presencia digital completa que tu empresa necesita para crecer.
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Una automatización funciona mejor cuando tu presencia digital, datos y operación hablan el mismo idioma.
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[240px]">
+        {/* Row 1: SEO Local (grande) + Dashboards */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 mb-4">
 
-          {/* SEO Local — Grande (2 columnas) */}
-          <motion.div {...fadeIn(0.1)} className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-8 flex flex-col justify-between overflow-hidden relative group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center">
-                  <Search className="w-5 h-5 text-cyan-500" />
+          {/* SEO Local — 3 columnas */}
+          <motion.div
+            {...fadeIn(0.1)}
+            className="bg-white/75 lg:col-span-3 rounded-2xl border border-sky-200 overflow-hidden flex flex-col group hover:border-cyan-300 transition-colors duration-300 shadow-sm"
+          >
+            {/* Header */}
+            <div className="p-6 pb-4 flex items-start gap-4">
+              <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Search className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-semibold text-cyan-300 bg-cyan-500/8 px-2.5 py-0.5 rounded-full">SEO Local</span>
                 </div>
-                <span className="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2.5 py-1 rounded-full">SEO Local</span>
+                <h3 className="text-xl font-bold text-navy">Que te encuentren en Google</h3>
+                <p className="text-slate-600 text-sm mt-1 leading-relaxed">
+                  Optimizamos tu perfil de Google Business y posicionamiento local para aparecer primero cuando tus clientes buscan.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-navy mb-2">Que te encuentren en Google</h3>
-              <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-                Optimizamos tu presencia local para que aparezcas primero cuando tus clientes te buscan.
-              </p>
             </div>
-            {/* Ilustración resultados búsqueda */}
-            <div className="relative z-10 mt-4 space-y-2">
-              {['Tu Empresa · Abierto ahora', 'Reseñas ⭐⭐⭐⭐⭐ · 128 opiniones', 'verny.cl · Ver en Google Maps →'].map((r, i) => (
-                <div key={r} className={`flex items-center gap-2 text-xs ${i === 0 ? 'text-navy font-semibold' : 'text-gray-400'}`}>
-                  {i === 0 && <span className="w-1.5 h-1.5 rounded-full bg-green-500" />}
-                  {i === 1 && <span className="text-yellow-500">★</span>}
-                  {i === 2 && <span className="text-cyan-500">↗</span>}
-                  {r}
+
+            {/* SEO image */}
+            <div className="relative mx-4 mb-4 rounded-xl overflow-hidden h-[280px] bg-white">
+              <Image
+                src="/seo-google-ecosystem.jpg"
+                alt="Google ecosystem SEO local"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
+
+          {/* Dashboards — 2 columnas */}
+          <motion.div
+            {...fadeIn(0.2)}
+            className="bg-white/75 lg:col-span-2 rounded-2xl border border-sky-200 overflow-hidden flex flex-col group hover:border-cyan-300 transition-colors duration-300 shadow-sm"
+          >
+            {/* Header */}
+            <div className="p-6 pb-4 flex items-start gap-4">
+              <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                <BarChart2 className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-navy">Toma decisiones con datos</h3>
+                <p className="text-slate-600 text-xs mt-1 leading-relaxed">Dashboards en tiempo real sobre conversaciones y ventas.</p>
+              </div>
+            </div>
+
+            {/* Dashboard image */}
+            <div className="relative mx-4 mb-4 rounded-xl overflow-hidden h-[280px] bg-white">
+              <Image
+                src="/dashboard-analytics.jpg"
+                alt="Dashboard analytics en tiempo real"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Row 2: Gestión Centralizada + Tu cara al mundo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          {/* Gestión Centralizada */}
+          <motion.div
+            {...fadeIn(0.3)}
+            className="bg-white/75 rounded-2xl border border-sky-200 p-6 flex flex-col group hover:border-cyan-300 transition-colors duration-300 shadow-sm"
+          >
+            <div className="flex items-start gap-4 mb-5">
+              <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Users className="w-5 h-5 text-cyan-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-navy mb-1">Gestión Centralizada</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">Portal interno para tu equipo: clientes, tareas y documentos en un solo lugar.</p>
+              </div>
+            </div>
+            <div className="mt-auto space-y-2">
+              {[
+                { label: 'Clientes', count: '324', color: 'bg-cyan-500/20 text-cyan-300' },
+                { label: 'Tareas pendientes', count: '12', color: 'bg-yellow-500/20 text-yellow-300' },
+                { label: 'Documentos', count: '89', color: 'bg-sky-100 text-navy' },
+              ].map(item => (
+                <div key={item.label} className="flex items-center justify-between bg-white border border-sky-100 rounded-xl px-4 py-2.5">
+                  <span className="text-sm text-slate-600">{item.label}</span>
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${item.color}`}>{item.count}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Dashboards */}
-          <motion.div {...fadeIn(0.2)} className="bg-navy rounded-2xl p-6 flex flex-col justify-between overflow-hidden relative group">
-            <div>
-              <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4">
-                <BarChart2 className="w-5 h-5 text-cyan-400" />
+          {/* Tu cara al mundo */}
+          <motion.div
+            {...fadeIn(0.4)}
+            className="bg-white/75 rounded-2xl border border-sky-200 p-6 flex flex-col group hover:border-cyan-300 transition-colors duration-300 shadow-sm"
+          >
+            <div className="flex items-start gap-4 mb-5">
+              <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Monitor className="w-5 h-5 text-cyan-600" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-1">Toma decisiones con datos</h3>
-              <p className="text-white/50 text-xs leading-relaxed">Dashboards en tiempo real sobre tus conversaciones y ventas.</p>
-            </div>
-            {/* Mini gráfico */}
-            <div className="flex items-end gap-1.5 h-16 mt-4">
-              {[30, 50, 40, 70, 55, 85, 75, 95].map((h, i) => (
-                <motion.div
-                  key={i}
-                  className="flex-1 bg-cyan-500 rounded-sm opacity-80"
-                  style={{ height: `${h}%` }}
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.07, duration: 0.4 }}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Intranet */}
-          <motion.div {...fadeIn(0.3)} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col justify-between group hover:border-cyan-200 transition-colors">
-            <div>
-              <div className="w-10 h-10 bg-cyan-50 rounded-xl flex items-center justify-center mb-4">
-                <Users className="w-5 h-5 text-cyan-500" />
+              <div>
+                <h3 className="text-lg font-bold text-navy mb-1">Tu cara al mundo</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">Sitios web modernos, rápidos y optimizados para convertir visitas en clientes.</p>
               </div>
-              <h3 className="text-lg font-bold text-navy mb-1">Gestión Centralizada</h3>
-              <p className="text-gray-500 text-xs leading-relaxed">Portal interno para tu equipo: clientes, tareas y documentos en un solo lugar.</p>
             </div>
-            <div className="flex gap-2 mt-4">
-              {['Clientes', 'Tareas', 'Docs'].map(t => (
-                <span key={t} className="text-[10px] bg-gray-50 border border-gray-100 rounded-lg px-2.5 py-1 text-gray-500 font-medium">{t}</span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Rediseño Web */}
-          <motion.div {...fadeIn(0.4)} className="bg-gradient-to-br from-navy to-navy-700 rounded-2xl p-6 flex flex-col justify-between group">
-            <div>
-              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-                <Monitor className="w-5 h-5 text-cyan-400" />
+            <div className="mt-auto bg-white rounded-xl p-4 border border-sky-100">
+              <div className="flex gap-1.5 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                <div className="flex-1 bg-sky-50 rounded ml-2 h-2.5 flex items-center px-2">
+                  <span className="text-[8px] text-navy/40">verny.cl</span>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-white mb-1">Tu cara al mundo</h3>
-              <p className="text-white/50 text-xs leading-relaxed">Sitios web modernos, rápidos y optimizados para convertir visitas en clientes.</p>
-            </div>
-            <div className="mt-4 bg-white/5 rounded-xl p-3 border border-white/10">
-              <div className="flex gap-1 mb-2">
-                <span className="w-2 h-2 rounded-full bg-red-400" />
-                <span className="w-2 h-2 rounded-full bg-yellow-400" />
-                <span className="w-2 h-2 rounded-full bg-green-400" />
-              </div>
-              <div className="space-y-1.5">
-                <div className="h-1.5 bg-cyan-500/40 rounded w-3/4" />
-                <div className="h-1.5 bg-white/20 rounded w-full" />
-                <div className="h-1.5 bg-white/10 rounded w-2/3" />
+              <div className="space-y-2">
+                <div className="h-2 bg-cyan-400/70 rounded-full w-3/4" />
+                <div className="h-1.5 bg-sky-100 rounded-full w-full" />
+                <div className="h-1.5 bg-sky-100 rounded-full w-5/6" />
+                <div className="grid grid-cols-3 gap-1.5 mt-3">
+                  {['bg-cyan-100', 'bg-sky-50', 'bg-sky-50'].map((c, i) => (
+                    <div key={i} className={`h-8 rounded-lg ${c}`} />
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

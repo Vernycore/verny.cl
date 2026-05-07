@@ -32,7 +32,7 @@ const pasos = [
 
 export default function Proceso() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-28 bg-white/84 backdrop-blur-[1px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,18 +40,18 @@ export default function Proceso() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-navy mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
             Cómo trabajamos{' '}
-            <span className="text-cyan-500">contigo</span>
+            <span className="text-gradient">contigo</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Un proceso claro, sin tecnicismos. Del diagnóstico al resultado en semanas, no meses.
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">
+            La solución se diseña desde la necesidad real, no desde la tecnología disponible.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {/* Línea conectora desktop */}
-          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gray-100 z-0" />
+          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-sky-200 z-0" />
 
           {pasos.map((paso, i) => {
             const Icon = paso.icon
@@ -64,13 +64,12 @@ export default function Proceso() {
                 transition={{ delay: i * 0.12, duration: 0.5 }}
                 className="relative z-10 flex flex-col items-center text-center group"
               >
-                {/* Círculo con número */}
-                <div className="w-20 h-20 rounded-2xl bg-navy flex items-center justify-center mb-5 shadow-lg group-hover:bg-cyan-500 transition-colors duration-300">
-                  <Icon className="w-8 h-8 text-cyan-400 group-hover:text-white transition-colors duration-300" />
+                <div className="w-20 h-20 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center mb-5 shadow-sm group-hover:bg-cyan-50 group-hover:border-cyan-300 transition-all duration-300">
+                  <Icon className="w-8 h-8 text-cyan-600" />
                 </div>
-                <span className="text-xs font-bold text-cyan-500 mb-2 tracking-wider">{paso.numero}</span>
+                <span className="text-xs font-bold text-cyan-700 mb-2 tracking-wider">{paso.numero}</span>
                 <h3 className="text-lg font-bold text-navy mb-3">{paso.titulo}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{paso.descripcion}</p>
+                <p className="text-slate-600 text-sm leading-relaxed">{paso.descripcion}</p>
               </motion.div>
             )
           })}

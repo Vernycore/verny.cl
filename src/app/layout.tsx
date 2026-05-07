@@ -30,7 +30,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn("h-full", "antialiased", inter.variable, "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FBFEFF]">
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        >
+          <div
+            className="absolute left-1/2 top-[8vh] h-[62vh] w-[140vw] -translate-x-1/2 bg-contain bg-center bg-no-repeat opacity-45 sm:top-[4vh] sm:h-[70vh] lg:top-0 lg:h-[78vh]"
+            style={{ backgroundImage: "url('/wave-glass-fixed.png')" }}
+          />
+          <div className="absolute inset-0 bg-white/55" />
+        </div>
+        <div className="relative z-10 flex min-h-full flex-col">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }

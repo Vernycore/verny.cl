@@ -120,19 +120,19 @@ export default function Garantia() {
       </AnimatePresence>
 
       {/* Garantía de valor */}
-      <section className="py-20 bg-navy-50">
+      <section className="py-24 bg-[#EAF7FF]/84 backdrop-blur-[1px]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 border-l-4 border-cyan-500 shadow-sm flex gap-5"
+            className="bg-white/80 rounded-2xl p-6 sm:p-8 border-l-4 border-cyan-400 border border-sky-200 flex flex-col sm:flex-row gap-5 shadow-sm"
           >
-            <ShieldCheck className="w-10 h-10 text-cyan-500 flex-shrink-0 mt-1" />
+            <ShieldCheck className="w-10 h-10 text-cyan-400 flex-shrink-0 mt-1" />
             <div>
               <h3 className="text-xl font-bold text-navy mb-2">Nuestra garantía de valor</h3>
-              <p className="text-gray-600 leading-relaxed">
-                En Verny, <strong>si no vemos un beneficio operativo claro o un retorno de inversión para tu empresa, te lo decimos.</strong> No vendemos tecnología por vender. Primero hacemos el diagnóstico honesto — si no hay valor real, no hay propuesta.
+              <p className="text-slate-600 leading-relaxed">
+                En Verny, <strong className="text-navy">si no vemos un beneficio operativo claro o un retorno de inversión para tu empresa, te lo decimos.</strong> No vendemos tecnología por vender. Primero hacemos el diagnóstico honesto: si no hay valor real, no hay propuesta.
               </p>
             </div>
           </motion.div>
@@ -140,7 +140,7 @@ export default function Garantia() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white/84 backdrop-blur-[1px]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -148,8 +148,8 @@ export default function Garantia() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-navy mb-4">Preguntas frecuentes</h2>
-            <p className="text-gray-500">Todo lo que necesitas saber antes de dar el primer paso.</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">Preguntas <span className="text-gradient">frecuentes</span></h2>
+            <p className="text-slate-600">Todo lo que necesitas saber antes de dar el primer paso.</p>
           </motion.div>
 
           <div className="space-y-3">
@@ -160,14 +160,14 @@ export default function Garantia() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="border border-gray-100 rounded-xl overflow-hidden"
+                className="border border-sky-200 rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-sky-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-inset"
                 >
                   <span className="font-medium text-navy text-sm pr-4">{faq.pregunta}</span>
-                  <ChevronDown className={`w-4 h-4 text-gray-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-navy/40 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 <AnimatePresence>
                   {openFaq === i && (
@@ -178,7 +178,7 @@ export default function Garantia() {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-4 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-3">
+                      <p className="px-6 pb-4 text-sm text-slate-600 leading-relaxed border-t border-sky-100 pt-3">
                         {faq.respuesta}
                       </p>
                     </motion.div>
@@ -191,7 +191,7 @@ export default function Garantia() {
       </section>
 
       {/* Lead Capture */}
-      <section id="contacto" className="py-24 bg-navy">
+      <section id="contacto" className="relative overflow-hidden py-28 bg-[#EAF7FF]/84 backdrop-blur-[1px]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -199,11 +199,11 @@ export default function Garantia() {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-4xl sm:text-5xl font-black text-navy mb-4">
               ¿Listo para{' '}
-              <span className="text-cyan-400">automatizar</span>?
+              <span className="text-gradient">automatizar</span>?
             </h2>
-            <p className="text-white/60">
+            <p className="text-slate-600">
               Cuéntanos sobre tu negocio y te respondemos en menos de 24 horas.
             </p>
           </motion.div>
@@ -212,58 +212,58 @@ export default function Garantia() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-10 text-center"
+              className="bg-white/80 border border-sky-200 rounded-2xl p-10 text-center shadow-sm"
             >
               <div className="w-14 h-14 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <ShieldCheck className="w-7 h-7 text-cyan-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">¡Mensaje recibido!</h3>
-              <p className="text-white/50 text-sm">Te contactaremos en menos de 24 horas.</p>
+              <h3 className="text-xl font-bold text-navy mb-2">¡Mensaje recibido!</h3>
+              <p className="text-slate-600 text-sm">Te contactaremos en menos de 24 horas.</p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="relative space-y-4 rounded-2xl border border-sky-200 bg-white/80 p-5 shadow-sm backdrop-blur">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-white/60 text-xs font-medium mb-1.5">Nombre *</label>
+                  <label className="block text-navy/70 text-xs font-medium mb-1.5">Nombre *</label>
                   <input
                     type="text"
                     required
                     value={formData.nombre}
                     onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                     placeholder="Tu nombre"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    className="w-full bg-white border border-sky-200 rounded-lg px-4 py-3 text-navy text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label className="block text-white/60 text-xs font-medium mb-1.5">Email *</label>
+                  <label className="block text-navy/70 text-xs font-medium mb-1.5">Email *</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="tu@empresa.cl"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                    className="w-full bg-white border border-sky-200 rounded-lg px-4 py-3 text-navy text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-white/60 text-xs font-medium mb-1.5">Empresa</label>
+                <label className="block text-navy/70 text-xs font-medium mb-1.5">Empresa</label>
                 <input
                   type="text"
                   value={formData.empresa}
                   onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
                   placeholder="Nombre de tu empresa"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent"
+                  className="w-full bg-white border border-sky-200 rounded-lg px-4 py-3 text-navy text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent"
                 />
               </div>
               <div>
-                <label className="block text-white/60 text-xs font-medium mb-1.5">¿En qué podemos ayudarte?</label>
+                <label className="block text-navy/70 text-xs font-medium mb-1.5">¿En qué podemos ayudarte?</label>
                 <textarea
                   rows={3}
                   value={formData.mensaje}
                   onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                   placeholder="Cuéntanos brevemente sobre tu negocio y qué quieres automatizar..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent resize-none"
+                  className="w-full bg-white border border-sky-200 rounded-lg px-4 py-3 text-navy text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent resize-none"
                 />
               </div>
 
@@ -279,7 +279,7 @@ export default function Garantia() {
                 <button
                   type="button"
                   onClick={() => setShowModal(true)}
-                  className="flex items-center justify-center gap-2 flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-3 rounded-lg transition-colors duration-200"
+                  className="flex items-center justify-center gap-2 flex-1 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-5 py-3 rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Contactar por WhatsApp
