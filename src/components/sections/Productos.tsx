@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Bot, Calendar, Plug, CheckCircle, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { Bot, Calendar, Plug, CheckCircle, ArrowRight, Code2 } from 'lucide-react'
 
 function fadeIn(delay = 0) {
   return {
@@ -111,18 +112,18 @@ function CalendarMockup() {
 
 /* ── Integrations grid ── */
 const integrations = [
-  { name: 'Salesforce', color: 'text-navy' },
-  { name: 'HubSpot', color: 'text-cyan-700' },
-  { name: 'WhatsApp', color: 'text-cyan-600' },
-  { name: 'SAP', color: 'text-navy' },
-  { name: 'Shopify', color: 'text-cyan-700' },
-  { name: 'Slack', color: 'text-navy' },
-  { name: 'Google', color: 'text-cyan-600' },
-  { name: 'Zapier', color: 'text-cyan-700' },
-  { name: 'Notion', color: 'text-slate-500' },
-  { name: 'Stripe', color: 'text-navy' },
-  { name: 'Make', color: 'text-cyan-700' },
-  { name: 'API propia', color: 'text-cyan-600' },
+  { name: 'Salesforce', slug: 'salesforce' },
+  { name: 'HubSpot', slug: 'hubspot' },
+  { name: 'WhatsApp', slug: 'whatsapp' },
+  { name: 'SAP', slug: 'sap' },
+  { name: 'Shopify', slug: 'shopify' },
+  { name: 'Slack', slug: 'slack' },
+  { name: 'Google', slug: 'google' },
+  { name: 'Zapier', slug: 'zapier' },
+  { name: 'Notion', slug: 'notion' },
+  { name: 'Stripe', slug: 'stripe' },
+  { name: 'Make', slug: 'make' },
+  { name: 'API propia', slug: null },
 ]
 
 function IntegrationsGrid() {
@@ -138,7 +139,19 @@ function IntegrationsGrid() {
             transition={{ delay: 0.1 + i * 0.05 }}
             className="bg-white/70 border border-sky-100 rounded-xl px-3 py-3 flex flex-col items-center gap-1.5 hover:border-cyan-300 hover:bg-cyan-50 transition-all duration-200"
           >
-            <Plug className={`w-4 h-4 ${int.color}`} />
+            {int.slug ? (
+              <Image
+                src={`https://cdn.simpleicons.org/${int.slug}`}
+                alt=""
+                width={20}
+                height={20}
+                className="object-contain"
+                loading="lazy"
+                unoptimized
+              />
+            ) : (
+              <Code2 className="h-5 w-5 text-cyan-600" />
+            )}
             <span className="text-navy/70 text-[10px] font-medium text-center leading-tight">{int.name}</span>
           </motion.div>
         ))}

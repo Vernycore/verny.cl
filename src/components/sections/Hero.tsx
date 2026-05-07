@@ -4,13 +4,23 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, CheckCircle, Zap, Calendar } from 'lucide-react'
 
-type SlotMsg = { from: 'bot'; type: 'slots'; intro: string; slots: string[] }
+type SlotMsg = {
+  from: 'bot'
+  type: 'slots'
+  intro: string
+  slots: string[]
+  icon?: string
+  suffix?: string
+  status?: string
+}
 type TextMsg = { from: 'user' | 'bot'; type?: 'text'; text: string }
 type Msg = TextMsg | SlotMsg
 
-const rubros: { negocio: string; msgs: Msg[] }[] = [
+const rubros: { negocio: string; result: string; resultDetail: string; msgs: Msg[] }[] = [
   {
     negocio: 'Clínica Vet. PatitasFelices',
+    result: '¡CITA AGENDADA!',
+    resultDetail: 'CALENDARIO ACTUALIZADO',
     msgs: [
       { from: 'user', text: 'Hola, mi perro tiene fiebre 🐕 ¿Tienen hora hoy?' },
       { from: 'bot', type: 'slots', intro: '¡Hola! 🎉 Claro, estas son mis horas disponibles:', slots: ['15:00', '17:30', '19:00'] },
@@ -19,7 +29,31 @@ const rubros: { negocio: string; msgs: Msg[] }[] = [
     ],
   },
   {
+    negocio: 'Pizzería Forno Vivo',
+    result: '¡PEDIDO TOMADO!',
+    resultDetail: 'COCINA NOTIFICADA',
+    msgs: [
+      { from: 'user', text: 'Hola! Quiero pedir una pizza familiar para retirar 🍕' },
+      { from: 'bot', type: 'slots', intro: '¡Claro! Estas son las más pedidas hoy:', slots: ['Pepperoni familiar', 'Vegetariana familiar', 'Napolitana familiar'], icon: '🍕', suffix: '', status: 'POPULAR' },
+      { from: 'user', text: 'Pepperoni familiar, pago al retirar' },
+      { from: 'bot', text: '✅ Pedido confirmado\n🍕 Pepperoni familiar\n⏱️ Retiro estimado: 25 min\nTe avisamos cuando esté lista.' },
+    ],
+  },
+  {
+    negocio: 'Tienda Casa Norte',
+    result: 'CATÁLOGO ENVIADO',
+    resultDetail: 'LEAD CLASIFICADO',
+    msgs: [
+      { from: 'user', text: 'Hola, ¿me puedes mandar el catálogo de productos?' },
+      { from: 'bot', type: 'slots', intro: '¡Por supuesto! ¿Qué categoría quieres revisar?', slots: ['Muebles de terraza', 'Iluminación', 'Decoración'], icon: '🛋️', suffix: '', status: 'VER' },
+      { from: 'user', text: 'Muebles de terraza' },
+      { from: 'bot', text: '✅ Te envié el catálogo de terraza.\nTambién puedo filtrar por presupuesto, medidas o disponibilidad para entrega.' },
+    ],
+  },
+  {
     negocio: 'Salón de Belleza Luna',
+    result: 'RESERVA CONFIRMADA',
+    resultDetail: 'AGENDA ACTUALIZADA',
     msgs: [
       { from: 'user', text: 'Quiero agendar un tinte y corte para el viernes 💇‍♀️' },
       { from: 'bot', type: 'slots', intro: '¡Hola! 😊 Para el viernes tengo disponible:', slots: ['10:00', '14:30', '17:00'] },
@@ -28,7 +62,20 @@ const rubros: { negocio: string; msgs: Msg[] }[] = [
     ],
   },
   {
+    negocio: 'Gimnasio PulsoFit',
+    result: 'CLASE RESERVADA',
+    resultDetail: 'CUPO DESCONTADO',
+    msgs: [
+      { from: 'user', text: 'Hola, ¿hay cupos para clase de funcional hoy? 🏋️' },
+      { from: 'bot', type: 'slots', intro: 'Sí, estos horarios aún tienen cupos:', slots: ['18:00', '19:00', '20:00'], status: 'CUPO' },
+      { from: 'user', text: '19:00 por favor' },
+      { from: 'bot', text: '✅ Cupo reservado\n🏋️ Funcional · 19:00 hrs\nRecuerda llegar 10 minutos antes.' },
+    ],
+  },
+  {
     negocio: 'Taller Mecánico Pérez',
+    result: 'SERVICIO AGENDADO',
+    resultDetail: 'TALLER NOTIFICADO',
     msgs: [
       { from: 'user', text: 'Necesito revisar los frenos, están fallando 🚗' },
       { from: 'bot', type: 'slots', intro: '¡Hola! 🔧 Tenemos disponibilidad mañana:', slots: ['09:00', '10:30', '14:00'] },
@@ -38,6 +85,8 @@ const rubros: { negocio: string; msgs: Msg[] }[] = [
   },
   {
     negocio: 'Dental Sonrisa Premium',
+    result: 'URGENCIA TOMADA',
+    resultDetail: 'EQUIPO ALERTADO',
     msgs: [
       { from: 'user', text: 'Tengo un dolor de muela muy fuerte 😣 ¿Me pueden ver hoy?' },
       { from: 'bot', type: 'slots', intro: '¡Hola! 🦷 Tenemos urgencias hoy con el Dr. Ramírez:', slots: ['14:00', '16:00', '17:30'] },
@@ -66,10 +115,10 @@ function SlotMessage({ msg }: { msg: SlotMsg }) {
         {msg.slots.map((slot) => (
           <div key={slot} className="flex items-center justify-between bg-gray-50 rounded-lg px-2.5 py-1.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] text-gray-500">🕐</span>
-              <span className="text-[11px] font-semibold text-gray-800">{slot} hrs</span>
+              <span className="text-[10px] text-gray-500">{msg.icon || '🕐'}</span>
+              <span className="text-[11px] font-semibold text-gray-800">{slot}{msg.suffix ?? ' hrs'}</span>
             </div>
-            <span className="text-[9px] font-bold text-green-600 bg-green-100 px-1.5 py-0.5 rounded-full">DISPONIBLE</span>
+            <span className="text-[9px] font-bold text-green-600 bg-green-100 px-1.5 py-0.5 rounded-full">{msg.status || 'DISPONIBLE'}</span>
           </div>
         ))}
       </div>
@@ -117,8 +166,8 @@ function IphoneMockup() {
               <Calendar className="w-4.5 h-4.5 text-white" />
             </div>
             <div>
-              <p className="text-gray-900 text-xs font-black tracking-tight leading-tight">¡CITA AGENDADA!</p>
-              <p className="text-gray-400 text-[10px] font-medium tracking-wide">CALENDARIO ACTUALIZADO</p>
+              <p className="text-gray-900 text-xs font-black tracking-tight leading-tight">{rubro.result}</p>
+              <p className="text-gray-400 text-[10px] font-medium tracking-wide">{rubro.resultDetail}</p>
             </div>
           </motion.div>
         )}
